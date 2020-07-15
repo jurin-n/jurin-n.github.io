@@ -13,6 +13,7 @@
 
             gtag('config', 'G-HFBDP2LT79');
         </script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="./bootstrap-4.5.0-dist/css/bootstrap.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     </head>
@@ -26,5 +27,13 @@
                 </ul>
             </div>
         </div>
+        <script>
+            $.ajax({
+                url:'https://cic7h7cdab.execute-api.ap-northeast-1.amazonaws.com/prod/songs'
+            }).done(function( response ) {
+                console.log(response)
+            }
+            )
+        </script>
     </body>
 </html>
