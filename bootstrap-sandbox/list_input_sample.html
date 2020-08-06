@@ -121,11 +121,28 @@
                                         </select>                            
                                     </div>
                                 </div>
+                                <div class="row my-1">
+                                    <div class="col-2 col-lg-1">
+                                        <input type="text" name="xxx-r5-ItemNo" value="" class="form-control form-control-sm" />
+                                    </div>
+                                    <div class="col-3 col-lg-4">
+                                        <input type="text" name="xxx-r5-ItemId" value="" class="form-control form-control-sm"/>
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="xxx-r5-ItemName" value="" class="form-control form-control-sm"/>
+                                    </div>
+                                    <div class="col">
+                                        <select name="xxx-r5-ItemType" class="form-control form-control-sm">
+                                            <option value="String">String</option>
+                                            <option value="Integer">Integer</option>
+                                        </select>                            
+                                    </div>
+                                </div>
                             </div>
                             <div class="item-columns-footer">
                                 <div id="parent-of-addrow" class="parent-of-addrow">
-                                    <a href="#" id="item-columns-addrow" class="btn btn-outline-primary btn-sm">
-                                        + Add row
+                                    <a id="item-columns-addrow" class="btn btn-outline-primary btn-sm">
+                                        + Add 5 rows
                                     </a>
                                 </div>
                             </div>
@@ -141,7 +158,7 @@
                                         <input type="text" name="xxx-rnnn-ItemName" value="" class="form-control form-control-sm"/>
                                     </div>
                                     <div class="col">
-                                        <select name="xxx-rnnn-ItemType" class="form-control form-control-sm">
+                                        <select name="xxx-r4-ItemType" class="form-control form-control-sm">
                                             <option value="String">String</option>
                                             <option value="Integer">Integer</option>
                                         </select>                            
@@ -179,18 +196,21 @@
                                         .parent()
                                             .children(".item-columns-body")
                                                 .children().length;
-                let newIndex = count + 1;
-                template.find("[name^='xxx-rnnn-']").each(function(){
-                    $(this).attr('name',$(this).attr('name').replace('xxx-rnnn-','xxx-r'+newIndex.toString() +'-'));
-                });
+                for (let i = 0; i < 5; i++) {
+                    let newIndex = count + i + 1;
+                    let newItem = template.clone();
 
-                //テンプレートを一覧の下に挿入
-                $(this)
-                    .parent()
+                    newItem.find("[name^='xxx-rnnn-']").each(function(){
+                        $(this).attr('name',$(this).attr('name').replace('xxx-rnnn-','xxx-r'+newIndex.toString() +'-'));
+                    });
+                    //テンプレートを一覧の下に挿入
+                    $(this)
                         .parent()
                             .parent()
-                                .children(".item-columns-body")
-                                    .append(template);
+                                .parent()
+                                    .children(".item-columns-body")
+                                        .append(newItem);
+                }
             });
         </script>
     </body>
