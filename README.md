@@ -1,1 +1,0 @@
-# jurin-n.github.io
